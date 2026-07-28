@@ -1,7 +1,5 @@
 package ru.yandex.practicum;
 
-
-import java.io.PrintWriter;
 import java.nio.file.*;
 import java.io.IOException;
 import java.util.Scanner;
@@ -17,7 +15,7 @@ import java.util.Scanner;
  */
 public class Wordle {
 
-    public static void main (String[]args){
+    public static void main(String[]args) {
 
         Scanner scanner = new Scanner(System.in);
         Logger logger = new Logger();
@@ -40,7 +38,7 @@ public class Wordle {
                 if (usersAnswer.isBlank()) {
                     logger.log("Подсказка:\n" + result + "\n" + "steps = " + wordleGame.getSteps() + "\n");
                 } else {
-                    logger.log( "Ответ игрока: " + usersAnswer + "\n" + result + "\n" + "steps = "
+                    logger.log("Ответ игрока: " + usersAnswer + "\n" + result + "\n" + "steps = "
                             + wordleGame.getSteps() + "\n");
                 }
                 if (result.endsWith("Вы победили!")) {
