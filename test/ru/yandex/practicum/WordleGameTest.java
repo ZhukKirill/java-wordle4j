@@ -32,7 +32,7 @@ class WordleGameTest {
 
     @BeforeEach
     void startGame() {
-        game = new WordleGame(dictionary , logger);
+        game = new WordleGame(dictionary);
         game.startGame();
         logger.log("Введите слово из 5 букв или нажмите ENTER для получения подсказки");
     }
@@ -46,7 +46,7 @@ class WordleGameTest {
     void withCorrectWordShouldReturnWinMessage() {
         String usersAnswer = game.getAnswer();
         String result = game.processingTheUsersAnswer(usersAnswer);
-        logger.log( "Ответ игрока: " + usersAnswer + "\n" + result + "\n" + "steps = "
+        logger.log("Ответ игрока: " + usersAnswer + "\n" + result + "\n" + "steps = "
                 + game.getSteps() + "\n");
         assertTrue(result.endsWith("Вы победили!"));
     }
@@ -55,7 +55,7 @@ class WordleGameTest {
     void withInvalidLengthShouldReturnErrorMessage() {
         String usersAnswer = "волк";
         String result = game.processingTheUsersAnswer(usersAnswer);
-        logger.log( "Ответ игрока: " + usersAnswer + "\n" + result + "\n" + "steps = "
+        logger.log("Ответ игрока: " + usersAnswer + "\n" + result + "\n" + "steps = "
                 + game.getSteps() + "\n");
         assertTrue(result.endsWith("слово должно состоять из пяти символов"));
     }
@@ -64,7 +64,7 @@ class WordleGameTest {
     void withNonRussianLettersShouldReturnErrorMessage() {
         String usersAnswer = "apple";
         String result = game.processingTheUsersAnswer(usersAnswer);
-        logger.log( "Ответ игрока: " + usersAnswer + "\n" + result + "\n" + "steps = "
+        logger.log("Ответ игрока: " + usersAnswer + "\n" + result + "\n" + "steps = "
                 + game.getSteps() + "\n");
         assertTrue(result.endsWith("разрешены только символы русского алфавита"));
     }
@@ -73,7 +73,7 @@ class WordleGameTest {
     void withWordNotInDictionaryShouldReturnErrorMessage() {
         String usersAnswer = "звать";
         String result = game.processingTheUsersAnswer(usersAnswer);
-        logger.log( "Ответ игрока: " + usersAnswer + "\n" + result + "\n" + "steps = "
+        logger.log("Ответ игрока: " + usersAnswer + "\n" + result + "\n" + "steps = "
                 + game.getSteps() + "\n");
         assertTrue(result.endsWith("Этого слова нет в словаре, попробуйте еще раз"));
     }
@@ -82,11 +82,11 @@ class WordleGameTest {
     void withMultipleInvalidAttemptsShouldNotIncreaseSteps() {
         String usersAnswer = "волк";
         String result = game.processingTheUsersAnswer(usersAnswer);
-        logger.log( "Ответ игрока: " + usersAnswer + "\n" + result + "\n" + "steps = "
+        logger.log("Ответ игрока: " + usersAnswer + "\n" + result + "\n" + "steps = "
                 + game.getSteps() + "\n");
         usersAnswer = "apple";
         result = game.processingTheUsersAnswer("apple");
-        logger.log( "Ответ игрока: " + usersAnswer + "\n" + result + "\n" + "steps = "
+        logger.log("Ответ игрока: " + usersAnswer + "\n" + result + "\n" + "steps = "
                 + game.getSteps() + "\n");
         assertEquals(0, game.getSteps());
     }
@@ -96,7 +96,7 @@ class WordleGameTest {
         int initialStep = game.getSteps();
         String usersAnswer = game.getAnswer();
         String result = game.processingTheUsersAnswer(usersAnswer);
-        logger.log( "Ответ игрока: " + usersAnswer + "\n" + result + "\n" + "steps = "
+        logger.log("Ответ игрока: " + usersAnswer + "\n" + result + "\n" + "steps = "
                 + game.getSteps() + "\n");
         assertEquals(initialStep + 1, game.getSteps());
     }
@@ -110,7 +110,7 @@ class WordleGameTest {
             if (usersAnswer.isBlank()) {
                 logger.log("Подсказка:\n" + result + "\n" + "steps = " + game.getSteps() + "\n");
             } else {
-                logger.log( "Ответ игрока: " + usersAnswer + "\n" + result + "\n" + "steps = "
+                logger.log("Ответ игрока: " + usersAnswer + "\n" + result + "\n" + "steps = "
                         + game.getSteps() + "\n");
             }
             if (result.endsWith("Вы победили!")) {

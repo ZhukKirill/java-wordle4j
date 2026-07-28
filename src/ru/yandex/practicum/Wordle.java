@@ -24,7 +24,7 @@ public class Wordle {
             WordleDictionaryLoader wordleDictionaryLoader = new WordleDictionaryLoader();
             WordleDictionary dictionary = wordleDictionaryLoader.loadTheDictionary("words_ru.txt");
             logger.log("Словарь загружен\n");
-            WordleGame wordleGame = new WordleGame(dictionary, logger);
+            WordleGame wordleGame = new WordleGame(dictionary);
             wordleGame.startGame();
             logger.log("Вам необходимо угадать загаданное существительное из пяти букв");
             logger.log("Игра началась\n");

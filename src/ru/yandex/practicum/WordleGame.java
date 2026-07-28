@@ -1,6 +1,5 @@
 package ru.yandex.practicum;
 
-import java.io.PrintWriter;
 import java.util.*;
 /*
 в этом классе хранится словарь и состояние игры
@@ -21,11 +20,9 @@ public class WordleGame {
     private int steps;
     private WordleDictionary dictionary;
     private Random random = new Random();
-    private Logger logger;
 
-    public WordleGame(WordleDictionary dictionary, Logger logger) {
+    public WordleGame(WordleDictionary dictionary) {
         this.dictionary = dictionary;
-        this.logger = logger;
     }
 
     public void startGame() {
@@ -73,8 +70,8 @@ public class WordleGame {
         for (int i = 0; i < usersAnswer.length(); i++) {
             if (usersAnswer.charAt(i) == answer.charAt(i)) {
                 result.append("+");
-            } else if(answer.indexOf(usersAnswer.charAt(i)) != -1) result.append("^");
-            else result.append("-");
+            } else if (answer.indexOf(usersAnswer.charAt(i)) != -1) result.append("^");
+                else result.append("-");
         }
         return result.toString();
     }
