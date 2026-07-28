@@ -19,7 +19,7 @@ public class Logger {
     }
 
     // Конструктор для тестов (лог в консоль)
-    public Logger (PrintWriter writer) {
+    public Logger(PrintWriter writer) {
         this.writer = writer;
     }
 
